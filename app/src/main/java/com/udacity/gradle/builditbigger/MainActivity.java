@@ -7,13 +7,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.palarz.mike.chucknorris.ChuckNorris;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    ChuckNorris mChuckNorris;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mChuckNorris = new ChuckNorris();
+        mChuckNorris.getJokes();
     }
 
 
@@ -40,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+        String currentJoke = mChuckNorris.getRandomJoke();
+        Toast.makeText(this, currentJoke, Toast.LENGTH_LONG).show();
     }
 
 

@@ -11,9 +11,9 @@ import retrofit2.http.GET;
 
 public interface JokeClient {
 
-    String BASE_URL = "http://api.icndb.com/";
+    String BASE_URL = "http://api.icndb.com";
 
-    @GET("jokes")
-    Call<List<Joke>> getJokes();
+    @GET("/jokes/")
+    Call<ICNDBResponse> getJokes();
 
 }
