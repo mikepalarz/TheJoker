@@ -89,7 +89,7 @@ public class ChuckNorris {
     }
 
     // Gets any random joke form ICNDB
-    public void getRandomJoke(){
+    public String getRandomJoke(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(JokeClient.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -111,6 +111,8 @@ public class ChuckNorris {
                 mRandomJoke = "Joke could not be provided";
             }
         });
+
+        return mRandomJoke;
     }
 
     // Gets a random nerdy joke from ICNDB
