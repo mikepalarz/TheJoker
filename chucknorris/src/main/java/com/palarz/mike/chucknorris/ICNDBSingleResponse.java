@@ -8,13 +8,13 @@ import java.util.List;
  * Created by mpala on 12/29/2017.
  */
 
-public class ICNDBResponse {
+public class ICNDBSingleResponse {
 
     @SerializedName("type")
     String mType;
 
     @SerializedName("value")
-    List<Joke> mJokes;
+    Joke mJoke;
 
     public String getType() {
         return mType;
@@ -24,14 +24,12 @@ public class ICNDBResponse {
         this.mType = type;
     }
 
-    public List<Joke> getJokes() {
-        return mJokes;
+    public Joke getJoke() {
+        return mJoke;
     }
 
-    public void setJokes(List<Joke> jokes) {
-        this.mJokes = jokes;
+    public void setJoke(Joke joke) {
+        this.mJoke = joke;
     }
 
 }
-
-
