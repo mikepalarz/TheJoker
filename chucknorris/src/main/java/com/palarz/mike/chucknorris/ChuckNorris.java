@@ -1,6 +1,7 @@
 package com.palarz.mike.chucknorris;
 
 import java.util.List;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,7 +49,7 @@ public class ChuckNorris {
                 System.out.println("The callback was a success");
                 System.out.println("Newly added jokes: ");
                 for (Joke currentJoke : mJokes) {
-                    System.out.println(currentJoke.getJokeString());
+                    System.out.println(currentJoke.getJoke());
                 }
             }
 
@@ -77,7 +78,7 @@ public class ChuckNorris {
                 System.out.println("Newly added nerdy jokes: ");
                 for (Joke currentJoke : mJokes) {
                     System.out.println("Joke category: " + currentJoke.getCategories()[0]);
-                    System.out.println(currentJoke.getJokeString() + "\n");
+                    System.out.println(currentJoke.getJoke() + "\n");
                 }
             }
 
@@ -101,7 +102,7 @@ public class ChuckNorris {
             @Override
             public void onResponse(Call<ICNDBSingleResponse> call, Response<ICNDBSingleResponse> response) {
                 System.out.println("The callback was a success");
-                mRandomJoke = response.body().getJoke().getJokeString();
+                mRandomJoke = response.body().getJoke().mJoke;
                 System.out.println("The new random joke: " + mRandomJoke);
             }
 
@@ -128,7 +129,7 @@ public class ChuckNorris {
             @Override
             public void onResponse(Call<ICNDBSingleResponse> call, Response<ICNDBSingleResponse> response) {
                 System.out.println("The callback was a success");
-                mRandomJoke = response.body().getJoke().getJokeString();
+                mRandomJoke = response.body().getJoke().mJoke;
                 System.out.println("The new random nerdy joke: " + mRandomJoke);
             }
 
@@ -140,6 +141,13 @@ public class ChuckNorris {
         });
 
         return mRandomJoke;
+    }
+
+    // Returns a random joke from within mJokes. This is done so that a random joke can still be
+    // obtained if getAllJokes() or getNerdyJokes() are used first.
+    public String pullRandomJoke() {
+        int index = new Random().nextInt(mJokes.size());
+        return mJokes.get(index).mJoke;
     }
 
     // main() was previously used to test out each of the method calls to ensure that they worked.

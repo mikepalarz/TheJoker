@@ -37,7 +37,7 @@ public class Joke {
         this.mID = ID;
     }
 
-    public String getJokeString() {
+    public String getJoke() {
         return mJoke;
     }
 
