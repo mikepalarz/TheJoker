@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ChuckNorris {
 
-    List<ICNDBResponse.Joke> mJokes;
+    List<Joke> mJokes;
 
     public ChuckNorris() {
         this.mJokes = null;
@@ -39,7 +39,7 @@ public class ChuckNorris {
                 mJokes = response.body().getJokes();
                 System.out.println("The callback was a success");
                 System.out.println("Newly added jokes: ");
-                for (ICNDBResponse.Joke currentJoke : mJokes) {
+                for (Joke currentJoke : mJokes) {
                     System.out.println(currentJoke.getJoke());
                 }
             }
@@ -56,7 +56,7 @@ public class ChuckNorris {
     public String getRandomJoke() {
         if (mJokes != null || !(mJokes.isEmpty())) {
             int index = new Random().nextInt(mJokes.size());
-            ICNDBResponse.Joke currentJoke = mJokes.get(index);
+            Joke currentJoke = mJokes.get(index);
             return currentJoke.getJoke();
         }
         else {
