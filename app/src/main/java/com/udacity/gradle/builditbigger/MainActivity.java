@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // We instantiate an instance of our ChuckNorris class
         mChuckNorris = new ChuckNorris();
-        mChuckNorris.getAllJokes();
     }
 
 
@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        String currentJoke = mChuckNorris.getRandomJoke();
+        // We then use ChuckNorris to pull a random, nerdy joke
+        String currentJoke = mChuckNorris.getRandomNerdyJoke();
         Toast.makeText(this, currentJoke, Toast.LENGTH_LONG).show();
     }
 

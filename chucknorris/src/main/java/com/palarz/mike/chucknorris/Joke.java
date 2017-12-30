@@ -3,7 +3,7 @@ package com.palarz.mike.chucknorris;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by mpala on 12/29/2017.
+ * A class created to mimic the contents of a joke from the JSON response from ICNDB.
  */
 
 public class Joke {
@@ -37,7 +37,7 @@ public class Joke {
         this.mID = ID;
     }
 
-    public String getJoke() {
+    public String getJokeString() {
         return mJoke;
     }
 

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by mpala on 12/29/2017.
+ * A class created to mimic a JSON response from ICNDB which contains an array of jokes.
  */
 
 public class ICNDBMultiResponse {

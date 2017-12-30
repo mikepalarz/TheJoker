@@ -1,13 +1,18 @@
 package com.palarz.mike.chucknorris;
 
 import java.util.List;
-import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+
+/**
+ * A class that is used to make use of the Retrofit client in order make use of all of the different
+ * type of jokes that can be obtained.
+ */
 
 public class ChuckNorris {
 
@@ -19,6 +24,7 @@ public class ChuckNorris {
         this.mRandomJoke = "";
     }
 
+    // Gets every single joke from ICNDB
     public void getAllJokes(){
 
         // We use Retrofit in order to obtain the HTTP response and parse the JSON data
@@ -42,7 +48,7 @@ public class ChuckNorris {
                 System.out.println("The callback was a success");
                 System.out.println("Newly added jokes: ");
                 for (Joke currentJoke : mJokes) {
-                    System.out.println(currentJoke.getJoke());
+                    System.out.println(currentJoke.getJokeString());
                 }
             }
 
@@ -54,18 +60,7 @@ public class ChuckNorris {
         });
     }
 
-    // TODO: Keep in mind that the web API also provides a feature to provide a random joke
-    public String getRandomJokeFromArray() {
-        if (mJokes != null || !(mJokes.isEmpty())) {
-            int index = new Random().nextInt(mJokes.size());
-            Joke currentJoke = mJokes.get(index);
-            return currentJoke.getJoke();
-        }
-        else {
-            return "No jokes are available at this time.";
-        }
-    }
-
+    // Gets all the nerdy jokes from ICNDB
     public void getNerdyJokes(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(JokeClient.BASE_URL)
@@ -82,7 +77,7 @@ public class ChuckNorris {
                 System.out.println("Newly added nerdy jokes: ");
                 for (Joke currentJoke : mJokes) {
                     System.out.println("Joke category: " + currentJoke.getCategories()[0]);
-                    System.out.println(currentJoke.getJoke() + "\n");
+                    System.out.println(currentJoke.getJokeString() + "\n");
                 }
             }
 
@@ -93,6 +88,7 @@ public class ChuckNorris {
         });
     }
 
+    // Gets any random joke form ICNDB
     public void getRandomJoke(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(JokeClient.BASE_URL)
@@ -105,9 +101,7 @@ public class ChuckNorris {
             @Override
             public void onResponse(Call<ICNDBSingleResponse> call, Response<ICNDBSingleResponse> response) {
                 System.out.println("The callback was a success");
-                // TODO: Clean this up at some point. This looks really confusing with getJoke()
-                // being called twice. Try to differentiate the different method calls somehow.
-                mRandomJoke = response.body().getJoke().getJoke();
+                mRandomJoke = response.body().getJoke().getJokeString();
                 System.out.println("The new random joke: " + mRandomJoke);
             }
 
@@ -119,7 +113,8 @@ public class ChuckNorris {
         });
     }
 
-    public void getRandomNerdyJoke(){
+    // Gets a random nerdy joke from ICNDB
+    public String getRandomNerdyJoke(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(JokeClient.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -131,9 +126,7 @@ public class ChuckNorris {
             @Override
             public void onResponse(Call<ICNDBSingleResponse> call, Response<ICNDBSingleResponse> response) {
                 System.out.println("The callback was a success");
-                // TODO: Clean this up at some point. This looks really confusing with getJoke()
-                // being called twice. Try to differentiate the different method calls somehow.
-                mRandomJoke = response.body().getJoke().getJoke();
+                mRandomJoke = response.body().getJoke().getJokeString();
                 System.out.println("The new random nerdy joke: " + mRandomJoke);
             }
 
@@ -143,13 +136,13 @@ public class ChuckNorris {
                 mRandomJoke = "Joke could not be provided";
             }
         });
+
+        return mRandomJoke;
     }
 
+    // main() was previously used to test out each of the method calls to ensure that they worked.
     public static void main(String[] args) {
-        ChuckNorris chuckNorris = new ChuckNorris();
-//        chuckNorris.getAllJokes();
-//        chuckNorris.getNerdyJokes();
-        chuckNorris.getRandomNerdyJoke();
+
     }
 
 }
