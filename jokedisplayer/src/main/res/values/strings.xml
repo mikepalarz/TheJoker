@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">JokeDisplayer</string>
+    <string name="joke_displayer_the_joke_test">This is a really, really funny joke</string>
+    <string name="joke_error">Joke could not be received</string>
+</resources>

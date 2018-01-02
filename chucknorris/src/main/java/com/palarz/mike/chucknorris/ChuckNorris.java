@@ -10,6 +10,7 @@ import java.util.Random;
  * only ever be one Chuck Norris.
  */
 
+// TODO: Make sure at some point to give credit to ICNDB.
 public class ChuckNorris {
 
     // An ArrayList that stores all of the jokes

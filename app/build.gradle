@@ -30,4 +30,7 @@ dependencies {
 
     // The dependency for the Java library
     compile project(':chucknorris')
+
+    // The dependency for the Android library
+    compile project(':jokedisplayer')
 }
