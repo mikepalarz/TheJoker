@@ -28,9 +28,11 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.google.android.gms:play-services-ads:11.0.4'
 
-    // The dependency for the Java library
-    compile project(':chucknorris')
-
     // The dependency for the Android library
     compile project(':jokedisplayer')
+
+    // The dependency for the GCE
+    compile (project(':backend')) {
+        exclude module: 'jsr305'
+    }
 }

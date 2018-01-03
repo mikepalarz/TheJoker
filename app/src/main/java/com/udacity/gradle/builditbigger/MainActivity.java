@@ -14,7 +14,7 @@ import com.palarz.mike.jokedisplayer.JokeDisplayer;
 
 public class MainActivity extends AppCompatActivity {
 
-    ChuckNorris mChuckNorris;
+//    ChuckNorris mChuckNorris;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // We instantiate an instance of our ChuckNorris class
-        mChuckNorris = ChuckNorris.get();
+//        mChuckNorris = ChuckNorris.get();
     }
 
 
@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void tellJoke(View view) {
         // We then use ChuckNorris to pull a random, nerdy joke
-        String currentJoke = mChuckNorris.getRandomJoke();
+//        String currentJoke = mChuckNorris.getRandomJoke();
 //        Toast.makeText(this, currentJoke, Toast.LENGTH_LONG).show();
-        Intent jokeIntent = new Intent(this, JokeDisplayer.class);
-        jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, currentJoke);
-        startActivity(jokeIntent);
+//        Intent jokeIntent = new Intent(this, JokeDisplayer.class);
+//        jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, currentJoke);
+//        startActivity(jokeIntent);
     }
 
 
