@@ -1,6 +1,7 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
+import com.palarz.mike.jokedisplayer.JokeDisplayer;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
@@ -84,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             context = params[0].first;
-            String name = params[0].second;
 
             try {
 //                return myApiService.sayHi(name).execute().getData();
@@ -96,7 +97,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            Intent jokeIntent = new Intent(context, JokeDisplayer.class);
+            jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, result);
+            context.startActivity(jokeIntent);
         }
     }
 
