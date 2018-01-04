@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"RnkXbyw9us4_w3H-FU6An0C4oYs/bPuONUz85B_PCoCySXQ4qnHDqjk\"",
+ "etag": "\"RnkXbyw9us4_w3H-FU6An0C4oYs/GUdzEUYEKDQN8xvV3-8qIaDfoiU\"",
  "discoveryVersion": "v1",
  "id": "myApi:v1",
  "name": "myApi",
@@ -77,6 +77,9 @@
    "properties": {
     "data": {
      "type": "string"
+    },
+    "joke": {
+     "type": "string"
     }
    }
   }
@@ -93,6 +96,15 @@
    "parameterOrder": [
     "name"
    ],
+   "returns": {
+    "$ref": "MyBean"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "myApi.tellJoke": {
+   "id": "myApi.tellJoke",
    "returns": {
     "$ref": "MyBean"
    },
