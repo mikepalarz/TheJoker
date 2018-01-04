@@ -12,7 +12,9 @@ import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.udacity.gradle.builditbigger.backend.MyApi;
+import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
+import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
+import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
@@ -54,15 +56,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        // We then use ChuckNorris to pull a random, nerdy joke
-//        String currentJoke = mChuckNorris.getRandomJoke();
-//        Toast.makeText(this, currentJoke, Toast.LENGTH_LONG).show();
-//        Intent jokeIntent = new Intent(this, JokeDisplayer.class);
-//        jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, currentJoke);
-//        startActivity(jokeIntent);
+        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Mike"));
     }
 
-    class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+    static class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
         private static MyApi myApiService = null;
         private Context context;
 
