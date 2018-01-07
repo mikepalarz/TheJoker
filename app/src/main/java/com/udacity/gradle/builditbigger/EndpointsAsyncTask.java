@@ -8,7 +8,6 @@ import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
-import com.palarz.mike.jokedisplayer.JokeDisplayer;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
@@ -17,19 +16,22 @@ import java.io.IOException;
  * Created by mpala on 1/5/2018.
  */
 
-class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
+class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
     interface PostExecuteCallback {
         String supplyJoke(String theJoke);
     }
 
     private static MyApi myApiService = null;
-    private Context context;
 
     private static PostExecuteCallback mCallback = null;
 
+    public EndpointsAsyncTask(PostExecuteCallback callback){
+        this.mCallback = callback;
+    }
+
     @Override
-    protected String doInBackground(Context... params) {
+    protected String doInBackground(Void... params) {
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -46,12 +48,6 @@ class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
             // end options for devappserver
 
             myApiService = builder.build();
-        }
-
-        context = params[0];
-
-        if (mCallback == null) {
-            mCallback = (PostExecuteCallback) context;
         }
 
         try {

@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void tellJoke(View view) {
-        new EndpointsAsyncTask().execute(this);
+        new EndpointsAsyncTask(this).execute();
     }
-    
+
     @Override
     public String supplyJoke(String theJoke) {
         Intent jokeIntent = new Intent(this, JokeDisplayer.class);
