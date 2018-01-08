@@ -22,12 +22,10 @@ import static org.junit.Assert.assertThat;
 public class EndpointsAsyncTaskTest implements EndpointsAsyncTask.PostExecuteCallback {
 
     EndpointsAsyncTask mTask;
-    Context mContext;
 
     @Before
     public void instantiateTask(){
         mTask = new EndpointsAsyncTask(this);
-        mContext = InstrumentationRegistry.getContext();
     }
 
     @Test
