@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * A singleton Java class that provides Chuck Norris jokes. It is a singleton because there can
- * only ever be one Chuck Norris.
+ * Primary purpose: A singleton Java class that provides Chuck Norris jokes. It is a singleton
+ * because there can only ever be one Chuck Norris.
  */
 
 // TODO: Make sure at some point to give credit to ICNDB.
