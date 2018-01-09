@@ -19,7 +19,7 @@ import java.io.IOException;
 class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
     interface PostExecuteCallback {
-        String supplyJoke(String theJoke);
+        void supplyJoke(String theJoke);
     }
 
     private static MyApi myApiService = null;

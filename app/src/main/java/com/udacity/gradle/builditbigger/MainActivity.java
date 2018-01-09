@@ -46,11 +46,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public String supplyJoke(String theJoke) {
+    public void supplyJoke(String theJoke) {
         Intent jokeIntent = new Intent(this, JokeDisplayer.class);
         jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, theJoke);
         startActivity(jokeIntent);
-
-        return theJoke;
     }
 }
