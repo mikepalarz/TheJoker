@@ -19,12 +19,8 @@ import java.util.concurrent.CountDownLatch;
 public class MainActivity extends AppCompatActivity
         implements EndpointsAsyncTask.PostExecuteCallback {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-
     // A reference to our interstitial ad
     InterstitialAd mInterstitialAd;
-
-    CountDownLatch mLatch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +35,6 @@ public class MainActivity extends AppCompatActivity
         mInterstitialAd.loadAd(new AdRequest.Builder()
                                                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                                                 .build());
-        mLatch = new CountDownLatch(1);
     }
 
 
@@ -66,37 +61,42 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void tellJoke(View view) {
-
-        // If the ad has finished loading...
-        if (mInterstitialAd.isLoaded()) {
-            //...We will show the ad...
-            mInterstitialAd.show();
-            //...We'll create a listener...
-            mInterstitialAd.setAdListener(new AdListener(){
-
-                @Override
-                public void onAdClosed() {
-                    super.onAdClosed();
-                    mLatch.countDown();
-                    //...And load another ad in case the user decides to view more than one joke
-                    mInterstitialAd.loadAd(new AdRequest.Builder()
-                            .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                            .build());
-                                    }
-            });
-        }
+        // When the button is clicked, we simply launch the AsyncTask
         new EndpointsAsyncTask(this).execute();
     }
 
     @Override
     public void supplyJoke(final String theJoke) {
-        try {
-            mLatch.await();
-        } catch (InterruptedException exception) {
-            Log.e(TAG, "The thread that the latch was awaiting on was interrupted.");
+
+        // If the ad has finished loading...
+        if (mInterstitialAd.isLoaded()) {
+            //We will show the ad...
+            mInterstitialAd.show();
+            //We'll create a listener for when the ad is closed...
+            mInterstitialAd.setAdListener(new AdListener(){
+
+                @Override
+                public void onAdClosed() {
+                    super.onAdClosed();
+                    //And load another ad in case the user decides to view more than one joke
+                    mInterstitialAd.loadAd(new AdRequest.Builder()
+                            .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                            .build());
+
+                    // Finally, we'll launch JokeDisplayer to show the joke
+                    Intent jokeIntent = new Intent(getApplicationContext(), JokeDisplayer.class);
+                    jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, theJoke);
+                    startActivity(jokeIntent);
+                }
+
+            });
         }
-        Intent jokeIntent = new Intent(this, JokeDisplayer.class);
-        jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, theJoke);
-        startActivity(jokeIntent);
+        else {
+            // If the ad isn't loaded, we'll simply show the joke
+            Intent jokeIntent = new Intent(this, JokeDisplayer.class);
+            jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, theJoke);
+            startActivity(jokeIntent);
+        }
+
     }
 }
