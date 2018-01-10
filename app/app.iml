@@ -190,5 +190,9 @@
     <orderEntry type="module" module-name="jokedisplayer" exported="" />
     <orderEntry type="module" module-name="backend" exported="" />
     <orderEntry type="module" module-name="jokedisplayer" exported="" />
+    <orderEntry type="module" module-name="backend" exported="" />
+    <orderEntry type="module" module-name="jokedisplayer" exported="" />
+    <orderEntry type="module" module-name="backend" exported="" />
+    <orderEntry type="module" module-name="jokedisplayer" exported="" />
   </component>
 </module>

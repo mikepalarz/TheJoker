@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
 
@@ -15,6 +16,8 @@ import com.google.android.gms.ads.MobileAds;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
+
+    AdView mAdView;
 
     public MainActivityFragment() {
     }
@@ -25,7 +28,7 @@ public class MainActivityFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         MobileAds.initialize(getContext(), getString(R.string.ad_mob_app_id));
 
-        AdView mAdView = (AdView) root.findViewById(R.id.adView);
+        mAdView = (AdView) root.findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
         // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
@@ -33,6 +36,7 @@ public class MainActivityFragment extends Fragment {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
         return root;
     }
 }
