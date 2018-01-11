@@ -6,16 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.palarz.mike.jokedisplayer.JokeDisplayer;
 
 public class MainActivity extends AppCompatActivity
         implements EndpointsAsyncTask.PostExecuteCallback {
 
+    ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 
 
@@ -42,7 +48,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void tellJoke(View view) {
-        new EndpointsAsyncTask(this).execute();
+        new EndpointsAsyncTask(this, mProgressBar).execute();
     }
 
     @Override

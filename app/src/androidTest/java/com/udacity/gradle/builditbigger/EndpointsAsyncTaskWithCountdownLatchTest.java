@@ -66,7 +66,7 @@ public class EndpointsAsyncTaskWithCountdownLatchTest {
                 mJoke = theJoke;
                 mLatch.countDown();
             }
-        });
+        }, null);
         /*
         Then, we launch the task via execute() and make the test wait until the tasks finishes via
         the await() method.

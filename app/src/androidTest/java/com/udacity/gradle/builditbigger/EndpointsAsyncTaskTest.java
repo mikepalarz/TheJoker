@@ -31,7 +31,7 @@ public class EndpointsAsyncTaskTest implements EndpointsAsyncTask.PostExecuteCal
     // We want to be sure that the ASyncTask is created properly before the tests are run.
     @Before
     public void instantiateTask(){
-        mTask = new EndpointsAsyncTask(this);
+        mTask = new EndpointsAsyncTask(this, null);
     }
 
     // A simple test which checks whether the returned joke is either null or empty

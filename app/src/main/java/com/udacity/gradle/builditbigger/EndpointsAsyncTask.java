@@ -1,8 +1,11 @@
 package com.udacity.gradle.builditbigger;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -25,13 +28,23 @@ class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
     private static MyApi myApiService = null;
 
     private static PostExecuteCallback mCallback = null;
+    private ProgressBar mProgressBar;
 
-    public EndpointsAsyncTask(PostExecuteCallback callback){
+    public EndpointsAsyncTask(PostExecuteCallback callback, ProgressBar progressBar){
         this.mCallback = callback;
+        this.mProgressBar = progressBar;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        if (mProgressBar != null){
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     protected String doInBackground(Void... params) {
+
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -59,6 +72,10 @@ class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
+        if (mProgressBar != null) {
+            mProgressBar.setVisibility(View.GONE);
+        }
+
         mCallback.supplyJoke(result);
     }
 }
