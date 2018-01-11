@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -22,10 +23,14 @@ public class MainActivity extends AppCompatActivity
     // A reference to our interstitial ad
     InterstitialAd mInterstitialAd;
 
+    ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         // We first create a new interstitial ad instance and set its unit ID to the ID for testing
         mInterstitialAd = new InterstitialAd(this);
@@ -62,7 +67,7 @@ public class MainActivity extends AppCompatActivity
 
     public void tellJoke(View view) {
         // When the button is clicked, we simply launch the AsyncTask
-        new EndpointsAsyncTask(this).execute();
+        new EndpointsAsyncTask(this, mProgressBar).execute();
     }
 
     @Override
