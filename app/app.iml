@@ -124,6 +124,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-support" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/pre-dexed" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/reload-dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/restart-dex" />
@@ -133,6 +134,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/reports" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
@@ -186,17 +188,5 @@
     <orderEntry type="library" exported="" name="common-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="1_common-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-26.1.0" level="project" />
-    <orderEntry type="module" module-name="backend" exported="" />
-    <orderEntry type="module" module-name="jokedisplayer" exported="" />
-    <orderEntry type="module" module-name="backend" exported="" />
-    <orderEntry type="module" module-name="jokedisplayer" exported="" />
-    <orderEntry type="module" module-name="backend" exported="" />
-    <orderEntry type="module" module-name="jokedisplayer" exported="" />
-    <orderEntry type="module" module-name="backend" exported="" />
-    <orderEntry type="module" module-name="jokedisplayer" exported="" />
-    <orderEntry type="module" module-name="backend" exported="" />
-    <orderEntry type="module" module-name="jokedisplayer" exported="" />
-    <orderEntry type="module" module-name="backend" exported="" />
-    <orderEntry type="module" module-name="jokedisplayer" exported="" />
   </component>
 </module>
