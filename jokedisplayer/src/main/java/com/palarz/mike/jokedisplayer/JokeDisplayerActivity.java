@@ -13,7 +13,7 @@ import android.widget.TextView;
  * purposes of this project, it is responsible for displaying a joke received from MainActivity,
  * which obtains the joke from the GCE + Java library.
  */
-public class JokeDisplayer extends AppCompatActivity {
+public class JokeDisplayerActivity extends AppCompatActivity {
 
     /*
     * A string that is used for the Bundle within the Intent that launches this activity. It is

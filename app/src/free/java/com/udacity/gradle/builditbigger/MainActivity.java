@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     // The callback method of the EndpointsAsyncTask. When the EndpointsAsyncTask is finished, we
-    // will display the joke within the JokeDisplayer activity.
+    // will display the joke within the JokeDisplayerActivity activity.
     @Override
     public void supplyJoke(final String theJoke) {
 
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity
                             .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                             .build());
 
-                    // Finally, we'll launch JokeDisplayer to show the joke
+                    // Finally, we'll launch JokeDisplayerActivity to show the joke
                     Intent jokeIntent = new Intent(getApplicationContext(), JokeDisplayer.class);
                     jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, theJoke);
                     startActivity(jokeIntent);

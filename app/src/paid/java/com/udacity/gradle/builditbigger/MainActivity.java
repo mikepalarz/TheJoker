@@ -10,10 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 
-import com.palarz.mike.jokedisplayer.JokeDisplayer;
+import com.palarz.mike.jokedisplayer.JokeDisplayerActivity;
 
 /**
  * Primary purpose: This activity is largely responsible for containing the fragment. In addition,
@@ -65,11 +64,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     // The callback method of the EndpointsAsyncTask. When the EndpointsAsyncTask is finished, we
-    // will display the joke within the JokeDisplayer activity.
+    // will display the joke within the JokeDisplayerActivity activity.
     @Override
     public void supplyJoke(String theJoke) {
-        Intent jokeIntent = new Intent(this, JokeDisplayer.class);
-        jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, theJoke);
+        Intent jokeIntent = new Intent(this, JokeDisplayerActivity.class);
+        jokeIntent.putExtra(JokeDisplayerActivity.BUNDLE_EXTRA_KEY_JOKE, theJoke);
         startActivity(jokeIntent);
     }
 }
