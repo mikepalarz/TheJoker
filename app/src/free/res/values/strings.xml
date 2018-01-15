@@ -1,3 +1,5 @@
+<!--The following code is the property and sole work of Mike Palarz, a student at Udacity.-->
+
 <resources>
     <string name="app_name">Build it Bigger</string>
     <string name="instructions">Press the button for a delicious joke!</string>

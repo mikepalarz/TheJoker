@@ -1,3 +1,7 @@
+/*
+* The following code is the property and sole work of Mike Palarz, a student at Udacity.
+*/
+
 package com.palarz.mike.chucknorris;
 
 import java.util.ArrayList;
@@ -7,10 +11,10 @@ import java.util.Random;
 
 /**
  * Primary purpose: A singleton Java class that provides Chuck Norris jokes. It is a singleton
- * because there can only ever be one Chuck Norris.
+ * because there can only ever be one Chuck Norris. Jokes have been provided by the
+ * <a href="http://www.icndb.com/">ICNDB</a>.
  */
 
-// TODO: Make sure at some point to give credit to ICNDB.
 public class ChuckNorris {
 
     // An ArrayList that stores all of the jokes

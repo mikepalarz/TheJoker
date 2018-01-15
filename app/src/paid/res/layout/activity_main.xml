@@ -1,3 +1,5 @@
+<!--The following code is the property and sole work of Mike Palarz, a student at Udacity.-->
+
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment"

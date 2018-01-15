@@ -1,3 +1,7 @@
+/*
+* The following code is the property and sole work of Mike Palarz, a student at Udacity.
+*/
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {

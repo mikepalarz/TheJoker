@@ -1,3 +1,7 @@
+/*
+The following code is the property and sole work of Mike Palarz, a student at Udacity.
+ */
+
 package com.udacity.gradle.builditbigger;
 
 import android.os.Bundle;
@@ -13,7 +17,7 @@ import com.google.android.gms.ads.MobileAds;
 
 
 /**
- * A placeholder fragment containing a simple view.
+ * Primary purpose: A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
 
@@ -22,10 +26,16 @@ public class MainActivityFragment extends Fragment {
     public MainActivityFragment() {
     }
 
+    /*
+    In the case of the free version, we will be showing ads. We handle the banner ads within the
+    fragment.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
+
+        // We ensure to initialize the Mobile Ads SDK with  the app ID for testing purposes
         MobileAds.initialize(getContext(), getString(R.string.ad_mob_app_id));
 
         mAdView = (AdView) root.findViewById(R.id.adView);
@@ -35,6 +45,8 @@ public class MainActivityFragment extends Fragment {
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
+
+        // Finally, we load the ad
         mAdView.loadAd(adRequest);
 
         return root;

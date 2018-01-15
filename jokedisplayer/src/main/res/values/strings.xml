@@ -1,3 +1,5 @@
+<!--The following code is the property and sole work of Mike Palarz, a student at Udacity.-->
+
 <resources>
     <string name="app_name">JokeDisplayer</string>
     <string name="joke_displayer_the_joke_test">This is a really, really funny joke</string>

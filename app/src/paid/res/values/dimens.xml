@@ -1,3 +1,5 @@
+<!--The following code is the property and sole work of Mike Palarz, a student at Udacity.-->
+
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>

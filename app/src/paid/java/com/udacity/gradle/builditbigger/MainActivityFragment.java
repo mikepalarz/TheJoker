@@ -1,3 +1,7 @@
+/*
+The following code is the property and sole work of Mike Palarz, a student at Udacity.
+ */
+
 package com.udacity.gradle.builditbigger;
 
 import android.os.Bundle;
@@ -7,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * A placeholder fragment containing a simple view.
+ * Primary purpose: A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
 

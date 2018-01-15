@@ -1,11 +1,12 @@
+/*
+* The following code is the property and sole work of Mike Palarz, a student at Udacity.
+*/
+
 apply plugin: 'java'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Dependecy for Retrofit
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
 }
 
 sourceCompatibility = "1.7"

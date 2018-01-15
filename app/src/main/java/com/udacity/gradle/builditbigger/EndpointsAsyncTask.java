@@ -1,8 +1,9 @@
+/*
+The following code is the property and sole work of Mike Palarz, a student at Udacity.
+ */
+
 package com.udacity.gradle.builditbigger;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -16,18 +17,26 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 import java.io.IOException;
 
 /**
- * Created by mpala on 1/5/2018.
+ * Primary purpose: This AsyncTask implementation is responsible for obtaining jokes from the GCE.
+ * It was designed to be executed whenever a new joke request is made.
  */
 
 class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
+    /*
+     * A callback interface responsible for different activities and other classes to handle their
+     * own implementation of what should happen during onPostExecute().
+     */
     interface PostExecuteCallback {
         void supplyJoke(String theJoke);
     }
 
     private static MyApi myApiService = null;
 
+    // An instance of our callback
     private static PostExecuteCallback mCallback = null;
+
+    // A reference to the ProgressBar
     private ProgressBar mProgressBar;
 
     public EndpointsAsyncTask(PostExecuteCallback callback, ProgressBar progressBar){
@@ -58,7 +67,6 @@ class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
                             abstractGoogleClientRequest.setDisableGZipContent(true);
                         }
                     });
-            // end options for devappserver
 
             myApiService = builder.build();
         }
