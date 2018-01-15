@@ -17,9 +17,7 @@ import android.widget.ProgressBar;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import com.palarz.mike.jokedisplayer.JokeDisplayer;
-
-import java.util.concurrent.CountDownLatch;
+import com.palarz.mike.jokedisplayer.JokeDisplayerActivity;
 
 /**
  * Primary purpose: This activity is largely responsible for containing the fragment. In addition,
@@ -61,29 +59,6 @@ public class MainActivity extends AppCompatActivity
                                                 .build());
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     // The onClick() of the joke button
     public void tellJoke(View view) {
         // When the button is clicked, we simply launch the AsyncTask
@@ -111,8 +86,8 @@ public class MainActivity extends AppCompatActivity
                             .build());
 
                     // Finally, we'll launch JokeDisplayerActivity to show the joke
-                    Intent jokeIntent = new Intent(getApplicationContext(), JokeDisplayer.class);
-                    jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, theJoke);
+                    Intent jokeIntent = new Intent(getApplicationContext(), JokeDisplayerActivity.class);
+                    jokeIntent.putExtra(JokeDisplayerActivity.BUNDLE_EXTRA_KEY_JOKE, theJoke);
                     startActivity(jokeIntent);
                 }
 
@@ -120,8 +95,8 @@ public class MainActivity extends AppCompatActivity
         }
         else {
             // If the ad isn't loaded, we'll simply show the joke
-            Intent jokeIntent = new Intent(this, JokeDisplayer.class);
-            jokeIntent.putExtra(JokeDisplayer.BUNDLE_EXTRA_KEY_JOKE, theJoke);
+            Intent jokeIntent = new Intent(this, JokeDisplayerActivity.class);
+            jokeIntent.putExtra(JokeDisplayerActivity.BUNDLE_EXTRA_KEY_JOKE, theJoke);
             startActivity(jokeIntent);
         }
 
