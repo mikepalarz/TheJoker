@@ -22,6 +22,10 @@ allprojects {
     }
 }
 
+/**
+ * This task is responsible for launching a local GCE dev server, running connected tests, and
+ * finally shutting down the server.
+ */
 task launchGCEAndRunTests(dependsOn: ":backend:appengineRun") {
     group "Other"
     description "Launches a local GCE dev server, runs connected tests, and shuts down the server"

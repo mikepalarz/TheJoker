@@ -24,6 +24,7 @@ import static org.hamcrest.text.IsEmptyString.isEmptyString;
 /**
  * Primary purpose: The primary purpose of this test is to check the contents of the returned
  * joke in various ways. This test is done slightly differently by making use of a CountDownLatch.
+ * It was created in order to see an alternative approach to testing an AsyncTask.
  */
 
 @RunWith(AndroidJUnit4.class)
@@ -38,7 +39,7 @@ public class EndpointsAsyncTaskWithCountdownLatchTest {
     /*
     A CountDownLatch allows us to wait until our AsyncTask has finished before we check the contents
     of the returned joke. If we do not wait until the task if finished, then it's possible that
-     the task did not yet complete and the joke will be empty or null.
+    the task did not yet complete and the joke will be empty or null.
      */
     CountDownLatch mLatch;
 
@@ -57,7 +58,8 @@ public class EndpointsAsyncTaskWithCountdownLatchTest {
     // A simple test which checks if the return joke is null or empty
     @Test
     public void getJoke_CheckNotNullOrEmpty() {
-        // First we instantiate our task and implement our callback interface
+        // First we instantiate our task and implement our callback interface. Also, we set the
+        // ProgressBar to null since we have no need for it.
         mTask = new EndpointsAsyncTask(new EndpointsAsyncTask.PostExecuteCallback() {
             @Override
             public void supplyJoke(String theJoke) {

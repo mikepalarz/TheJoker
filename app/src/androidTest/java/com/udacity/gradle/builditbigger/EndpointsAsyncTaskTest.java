@@ -6,6 +6,9 @@ package com.udacity.gradle.builditbigger;
 
 import android.support.test.runner.AndroidJUnit4;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.core.IsNull;
+import org.hamcrest.text.IsEmptyString;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +34,7 @@ public class EndpointsAsyncTaskTest implements EndpointsAsyncTask.PostExecuteCal
     // We want to be sure that the ASyncTask is created properly before the tests are run.
     @Before
     public void instantiateTask(){
+        // For the purposes of testing, the ProgressBar is set to null since we really don't need it
         mTask = new EndpointsAsyncTask(this, null);
     }
 
@@ -51,14 +55,15 @@ public class EndpointsAsyncTaskTest implements EndpointsAsyncTask.PostExecuteCal
         }
 
         // Finally, we make our assertions of the returned joke
-        assertThat(currentJoke, is(not(isEmptyOrNullString())));
-        assertThat(currentJoke, is(not(isEmptyString())));
+        MatcherAssert.assertThat(currentJoke, IsNull.notNullValue());
+        MatcherAssert.assertThat(currentJoke, not(IsEmptyString.isEmptyString()));
+        MatcherAssert.assertThat(currentJoke, is(not(isEmptyOrNullString())));
     }
 
 
     /*
     Although this method has been implemented, it isn't doing anything because we have no need
-    for it in this particular case.
+    for it in this style of testing.
     */
     @Override
     public void supplyJoke(String theJoke) {
