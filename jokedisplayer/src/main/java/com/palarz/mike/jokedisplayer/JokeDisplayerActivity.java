@@ -22,7 +22,7 @@ public class JokeDisplayerActivity extends AppCompatActivity {
     public static final String BUNDLE_EXTRA_KEY_JOKE = "com.palarz.mike.jokedisplayer.joke";
 
     // Our joke and out TextView that displays the joke
-    String mJoke;
+    private String mJoke;
     TextView mJokeTV;
 
     // Super simple: obtains the joke and displays it.
